@@ -20,12 +20,7 @@ var {
 class FictionalJourney extends Component {
   handleClick() {
     console.log('touch')
-    RNAlertTimer.writeFile(
-        'MyFile.txt',                       // File name
-        'Some Text',                        // File contents
-        function errorCallback(results) {},
-        function successCallback(results) {}
-    );
+    RNAlertTimer.startTimer({}, function() {});
   }
 
   render() {

@@ -17,9 +17,18 @@ RCT_EXPORT_METHOD(writeFile:(NSString *)fileName
                   errorCallback:(RCTResponseSenderBlock)failureCallback
                   callback:(RCTResponseSenderBlock)successCallback) {
   
-  [self scheduleNotification];
-  
   successCallback(@[@"Write method called"]);
+}
+
+RCT_EXPORT_METHOD(startTimer:(NSDictionary*)config callback:(RCTResponseSenderBlock)callback)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    while (true) {
+      [self scheduleNotification];
+      int sleeptime = arc4random_uniform(10);
+      sleep(sleeptime);
+    }
+  });
 }
 
 - (void)scheduleNotification
